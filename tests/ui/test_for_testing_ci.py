@@ -1,7 +1,7 @@
 from pages.demoqa_student_registration_page import RegistrationPage
 
 
-class TestRegistrationForm:
+class TestуукRegistrationForm:
 
     def test_fill_and_submit(self, browser):
         """
