@@ -1,27 +1,29 @@
+import allure
 from pages.demoqa_student_registration_page import RegistrationPage
+from data.registration_data import STUDENT
 
 
+@allure.feature("Student Registration Form")
 class TestRegistrationForm:
 
-    def test_fill_and_submit(self, browser):
-        """
-        Заполняет форму регистрации и проверяет
-        что после отправки появился блок с результатом.
-        """
+    @allure.story("Fill and submit registration form")
+    def test_fill_and_submit(self, browser) -> None:
+        # Arrange
         page = RegistrationPage(browser)
-        page.open()
 
-        page.fill_first_name("Alisa")
-        page.fill_last_name("Smyth")
-        page.fill_email("alisa@gmail.com")
-        page.select_gender("gender-male")
-        page.fill_phone("+78675436234")
-        page.select_hobbies(["hobby-sports", "hobby-reading", "hobby-music"])
-        page.fill_address("Lenina 11-1")
-        page.fill_state("Moscow")
-        page.fill_city("Moscow")
+        # Act
+        page.open()
+        page.fill_first_name(STUDENT["first_name"])
+        page.fill_last_name(STUDENT["last_name"])
+        page.fill_email(STUDENT["email"])
+        page.select_gender(STUDENT["gender"])
+        page.fill_phone(STUDENT["phone"])
+        page.select_hobbies(STUDENT["hobbies"])
+        page.fill_address(STUDENT["address"])
+        page.fill_state(STUDENT["state"])
+        page.fill_city(STUDENT["city"])
         page.submit()
 
-        # Заглушка: проверяем что остались на странице формы
+        # Assert
         assert "forms" in page.get_current_url(), \
-            f"Ожидали остаться на странице формы, текущий URL: {page.get_current_url()}"
+            f"Expected to stay on forms page, current URL: {page.get_current_url()}"
