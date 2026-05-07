@@ -1,3 +1,5 @@
+import os
+
 import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
@@ -5,7 +7,7 @@ from pages.base_page import BasePage
 
 class RegistrationPage(BasePage):
 
-    URL = "https://demoqa.ru/qa-auto/forms"
+    URL = os.environ["REGISTRATION_PAGE_URL"]
 
     FIRST_NAME      = (By.XPATH, '//*[@id="firstName"]')
     LAST_NAME       = (By.XPATH, '//*[@id="lastName"]')

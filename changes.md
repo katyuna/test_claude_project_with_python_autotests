@@ -67,6 +67,29 @@
 
 ---
 
+---
+
+## 2026-05-07 (2)
+
+### Move URL to .env
+
+**Branch:** `dev`
+
+#### `.env` — new file (not committed, in .gitignore)
+- Added `REGISTRATION_PAGE_URL=https://demoqa.ru/qa-auto/forms`
+
+#### `.env.example` — new file
+- Template for environment variables, safe to commit
+
+#### `conftest.py` (root)
+- Added `load_dotenv()` so the `.env` file is loaded before any test runs
+
+#### `pages/demoqa_student_registration_page.py`
+- Replaced hardcoded `URL = "https://demoqa.ru/qa-auto/forms"` with `URL = os.environ["REGISTRATION_PAGE_URL"]`
+- Added `import os`
+
+---
+
 ### Результат запуска тестов локально
 
 ```
